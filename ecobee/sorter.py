@@ -1,7 +1,9 @@
 from datetime import datetime
 from collections import namedtuple
-DataPoint = namedtuple('DataPoint', ['time', 'action'])
+from time import time
 
+DataPoint = namedtuple('DataPoint', ['time', 'action'])
+Sequence = namedtuple('Sequence', ['seq_len', 'actions'])
 
 timestamp_prefix = 'TS:'
 timestamp_postfix = 'GMT '
@@ -14,6 +16,7 @@ def read_input(input_file):
     reads each line of the file in the form TS:2018-12-03 13:29:15 +0000 GMT, Action:F
     and converts it to tuple (2018-12-03 13:29:15 +0000, F) with first value as time (prefix and postfix removed)
     and second value as just the action (prefix removed).
+    returns sorted list of entries, sorted by increasing order of time.
     """
     words = []
     with open(input_file, 'r') as f:
@@ -24,46 +27,44 @@ def read_input(input_file):
     return sorted(words, key=lambda x:datetime.strptime(x.time, date_fmt))
 
 
-def process(words, time_period_secs, top_n):
+def process(words, time_period, top_n_elems):
     """
     :param words: list of DataPoints, in increasing order of time.
+    :param time_period if two events are apart by this value of time, they are considered in separate sequence
+    :param top_n_elems: the number of top sequences to return
     :return: list of sequences
     """
     all_sequences = []
     prev_item = words[0]
-    cur_sequence = [prev_item.action]
+    cur_sequence_actions = [prev_item.action]
     cur_seq_len = 0
     for item in words[1:]:
         delta_seconds = (datetime.strptime(item.time, date_fmt) - datetime.strptime(prev_item.time, date_fmt)).total_seconds()
-        if delta_seconds >= time_period_secs:
+        if delta_seconds >= time_period:
             if cur_seq_len > 0:
-                all_sequences.append((cur_seq_len, cur_sequence))#TODO: Make a namedtuple for sequence??
+                all_sequences.append(Sequence(cur_seq_len, cur_sequence_actions))
             else:
-                all_sequences.append((delta_seconds, [prev_item.action, item.action]))
-            cur_sequence = [item.action]
+                all_sequences.append(Sequence(delta_seconds, [prev_item.action, item.action]))
+            cur_sequence_actions = [item.action]
             cur_seq_len = 0
         else:
-            cur_sequence.append(item.action)
+            cur_sequence_actions.append(item.action)
             cur_seq_len += delta_seconds
         prev_item = item
 
     if len(all_sequences) == 0:
-        all_sequences.append((cur_seq_len, cur_sequence))
-    print(all_sequences)
+        all_sequences.append(Sequence(cur_seq_len, cur_sequence_actions))
     all_sequences_sorted = sorted(all_sequences, key=lambda x: x[0], reverse=True)
-    print(all_sequences_sorted)
-    return all_sequences_sorted[:top_n]
+    return [(all_sequences_sorted[i].seq_len, all_sequences_sorted[i].actions) for i in range(0, min(top_n_elems, len(all_sequences_sorted)))]
 
-#ignore consecutive events
+
 if __name__ == '__main__':
-    #with open('data_sorted.txt', 'w') as f:
-    #    for item in words:
-    #        f.write(item[0] + ", " + item[1] + '\n')
-
-    time_period_secs = 0 #TODO: This will come as an arg
+    start = time()
+    time_period_secs = 3600 #TODO: This will come as an arg
     top_n = 40 #TODO: This will come as an arg
-    result = process(read_input('actions.txt'), time_period_secs, top_n)
+    result = process(read_input('data.txt'), time_period_secs, top_n)
+    print(result)
+    end = time()
+    print("Total time taken %s seconds" % str(end-start))
 
-
-#TODO: write unit tests
 #TODO: now change the logic according to Apache beam

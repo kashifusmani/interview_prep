@@ -1,12 +1,22 @@
+"""
+This module contains unittests for functions in beam_batch.py
+"""
 import unittest
 from ecobee.beam_batch import DataPoint, to_data_point, process
 
 
 class SorterTest(unittest.TestCase):
+    """
+    Unit test class for sorter.py
+    """
     def test_read_input(self):
+        """
+        test case for happy path of read_input()
+        :return:
+        """
         expected_output = DataPoint("2018-12-03 12:17:38 +0000", "G")
         actual_output = to_data_point("TS:2018-12-03 12:17:38 +0000 GMT, Action:G")
-        assert actual_output == expected_output
+        self.assertEqual(actual_output, expected_output)
 
     def test_process_case1(self):
         """
@@ -157,7 +167,7 @@ class SorterTest(unittest.TestCase):
             ),
         ]
 
-        assert actual_result == expected_result
+        self.assertEqual(actual_result, expected_result)
 
     def test_process_case2(self):
         """
@@ -257,7 +267,7 @@ class SorterTest(unittest.TestCase):
             ),
         ]
 
-        assert actual_result == expected_result
+        self.assertEqual(actual_result, expected_result)
 
         actual_result = process(test_input, time_period, 5)
         expected_result = [
@@ -299,7 +309,7 @@ class SorterTest(unittest.TestCase):
                 ],
             ),
         ]
-        assert actual_result == expected_result
+        self.assertEqual(actual_result, expected_result)
 
     def test_process_case3(self):
         """
@@ -355,7 +365,7 @@ class SorterTest(unittest.TestCase):
             )
         ]
 
-        assert actual_result == expected_result
+        self.assertEqual(actual_result, expected_result)
 
 
 if __name__ == "__main__":

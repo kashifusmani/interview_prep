@@ -3,7 +3,7 @@ from collections import namedtuple
 from time import time
 
 DataPoint = namedtuple('DataPoint', ['time', 'action'])
-Sequence = namedtuple('Sequence', ['seq_len', 'datapoints'])
+Sequence = namedtuple('Sequence', ['seq_len', 'actions'])
 
 timestamp_prefix = 'TS:'
 timestamp_postfix = 'GMT '
@@ -36,7 +36,7 @@ def process(words, time_period, top_n_elems):
     """
     all_sequences = []
     prev_item = words[0]
-    cur_sequence_actions = [prev_item]
+    cur_sequence_actions = [prev_item.action]
     cur_seq_len = 0
     for item in words[1:]:
         delta_seconds = (datetime.strptime(item.time, date_fmt) - datetime.strptime(prev_item.time, date_fmt)).total_seconds()
@@ -44,26 +44,27 @@ def process(words, time_period, top_n_elems):
             if cur_seq_len > 0:
                 all_sequences.append(Sequence(cur_seq_len, cur_sequence_actions))
             else:
-                all_sequences.append(Sequence(delta_seconds, [prev_item, item]))
-            cur_sequence_actions = [item]
+                all_sequences.append(Sequence(delta_seconds, [prev_item.action, item.action]))
+            cur_sequence_actions = [item.action]
             cur_seq_len = 0
         else:
-            cur_sequence_actions.append(item)
+            cur_sequence_actions.append(item.action)
             cur_seq_len += delta_seconds
         prev_item = item
 
     if len(all_sequences) == 0:
         all_sequences.append(Sequence(cur_seq_len, cur_sequence_actions))
     all_sequences_sorted = sorted(all_sequences, key=lambda x: x[0], reverse=True)
-    return [(all_sequences_sorted[i].seq_len, [(d.time, d.action) for d in all_sequences_sorted[i].datapoints]) for i in range(0, min(top_n_elems, len(all_sequences_sorted)))]
+    return [(all_sequences_sorted[i].seq_len, all_sequences_sorted[i].actions) for i in range(0, min(top_n_elems, len(all_sequences_sorted)))]
 
 
 if __name__ == '__main__':
     start = time()
-    time_period_secs = 3600
-    top_n = 40
+    time_period_secs = 3600 #TODO: This will come as an arg
+    top_n = 40 #TODO: This will come as an arg
     result = process(read_input('data.txt'), time_period_secs, top_n)
+    print(result)
     end = time()
     print("Total time taken %s seconds" % str(end-start))
 
-#TODO: Test with requirements.txt
+#TODO: now change the logic according to Apache beam

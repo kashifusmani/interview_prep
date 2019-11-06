@@ -5,7 +5,6 @@ top-n occurring sequences in given list of events
 """
 import argparse
 import logging
-import os
 from collections import namedtuple
 from datetime import datetime
 from time import time
@@ -23,6 +22,7 @@ TIMESTAMP_PREFIX = "TS:"
 TIMESTAMP_POSTFIX = "GMT "
 ACTION_PREFIX = "Action:"
 DATE_FMT = "%Y-%m-%d %H:%M:%S %z"
+USER_ID = 1
 
 
 def to_data_point(item):
@@ -34,71 +34,98 @@ def to_data_point(item):
     """
     entry = item[: len(item) - 1].split(",") if item.endswith("\n") else item.split(",")
     action_timestamp, action = (
-        entry[0][len(TIMESTAMP_PREFIX): -len(TIMESTAMP_POSTFIX)],
-        entry[1][len(ACTION_PREFIX) + 1:],
+        entry[0][len(TIMESTAMP_PREFIX) : -len(TIMESTAMP_POSTFIX)],
+        entry[1][len(ACTION_PREFIX) + 1 :],
     )
     return DataPoint(action_timestamp, action)
 
 
-def process(words, time_period, top_n_elems):
+def calculate_sec_difference(time1_str, time2_str, date_fmt):
     """
-    :param words: list of DataPoints, in increasing order of time.
-    :param time_period if two events are apart by this value of time,
+    calculate the seconds difference between time1_str and time2_str
+    :param time1_str: 2018-13-03 13:29:15 +0000
+    :param time2_str: 2018-12-03 13:29:15 +0000
+    :param date_fmt: format ex: %Y-%m-%d
+    :return: number of seconds, 3600
+    """
+    return abs(
+        datetime.strptime(time1_str, date_fmt) - datetime.strptime(time2_str, date_fmt)
+    ).total_seconds()
+
+
+def detect_sequences(sorted_rows, time_period_secs):
+    """
+    :param sorted_rows: list of DataPoints, in increasing order of time.
+    :param time_period_secs if two events are apart by this value of time,
     they are considered in separate sequence
-    :param top_n_elems: the number of top sequences to return
     :return: list of sequences
     """
     all_sequences = []
-    prev_item = words[0]
+    prev_item = sorted_rows[0]
     cur_sequence_actions = [prev_item]
+    num_sequences = 1
     cur_seq_len = 0
-    for item in words[1:]:
-        delta_seconds = (
-            datetime.strptime(item.time, DATE_FMT)
-            - datetime.strptime(prev_item.time, DATE_FMT)
-        ).total_seconds()
-        if delta_seconds >= time_period:
-            if cur_seq_len > 0:
-                all_sequences.append(Sequence(cur_seq_len, cur_sequence_actions))
-            else:
-                all_sequences.append(Sequence(delta_seconds, [prev_item, item]))
+    for item in sorted_rows[1:]:
+        delta_secs = calculate_sec_difference(item.time, prev_item.time, DATE_FMT)
+        if delta_secs >= time_period_secs:
+            all_sequences.append(Sequence(cur_seq_len, cur_sequence_actions))
+            num_sequences += 1
             cur_sequence_actions = [item]
             cur_seq_len = 0
         else:
             cur_sequence_actions.append(item)
-            cur_seq_len += delta_seconds
+            cur_seq_len += delta_secs
         prev_item = item
 
-    if len(all_sequences) == 0:
+    if not len(all_sequences) == num_sequences:
         all_sequences.append(Sequence(cur_seq_len, cur_sequence_actions))
-    all_sequences_sorted = sorted(all_sequences, key=lambda x: x[0], reverse=True)
+    return all_sequences
+
+
+def select(sequences, top_n):
+    """
+    return top_n sequences by sequence length in seconds
+    :param top_n: ex: 5
+    :param sequences: list of sequences returned by detect_sequences
+    :return:
+    """
+    all_sequences_sorted = sorted(sequences, key=lambda x: x[0], reverse=True)
     return [
         (
             all_sequences_sorted[i].seq_len,
             [(d.time, d.action) for d in all_sequences_sorted[i].datapoints],
         )
-        for i in range(0, min(top_n_elems, len(all_sequences_sorted)))
+        for i in range(0, min(top_n, len(all_sequences_sorted)))
     ]
 
 
-def _remove_if_exists(file_names):
+def add_key(row):
     """
-    utility function to remove files if they exist
-    :param file_names: list containing filenames
+    adds a dummy key to the row
+    :param row: a DataPoint
     :return:
     """
-    for file_name in file_names:
-        if os.path.exists(file_name):
-            os.remove(file_name)
+    # The idea is that we will process all the data for a given user on a single node
+    return USER_ID, row
 
 
-def run(argv=None, save_main_session=True):
+def sort_grouped_data(row):
     """
-    Main runner function
+    sorts the data by increasing timestamp
+    :param row: list of DataPoints
+    :return:
+    """
+    (_, data) = row
+    return sorted(data, key=lambda x: datetime.strptime(x.time, DATE_FMT))
+
+
+def parse(argv):
+    """
+    Parse the given command line arguments.
     :param argv:
-    :param save_main_session:
-    :return:
+    :return: known and unknown args
     """
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--input",
@@ -120,40 +147,40 @@ def run(argv=None, save_main_session=True):
         default=0,
         type=int,
         help="If two events are apart by this value of time, "
-             "they are considered in separate sequences.",
+        "they are considered in separate sequences.",
     )
-    parser.add_argument(
-        "--interim-results",
-        default="intermediate.txt",
-        help="Intermediate file location to write the calculations.",
-    )
-    known_args, pipeline_args = parser.parse_known_args(argv)
+    return parser.parse_known_args(argv)
+
+
+def run(argv=None, save_main_session=True):
+    """
+    Main runner function
+    :param argv:
+    :param save_main_session:
+    :return:
+    """
+    known_args, pipeline_args = parse(argv)
     start = time()
     pipeline_options = PipelineOptions(pipeline_args)
     pipeline_options.view_as(SetupOptions).save_main_session = save_main_session
-    _remove_if_exists([known_args.interim_results, known_args.output])
 
     pipeline = beam.Pipeline(options=pipeline_options)
     pipeline | "read" >> ReadFromText(known_args.input) | "format" >> beam.Map(
         to_data_point
-    ) | "intermediate_write" >> WriteToText(
-        known_args.interim_results, num_shards=1, shard_name_template=""
-    )
-    result = pipeline.run()
-    result.wait_until_finish()
-
-    batch_events = []
-    with open(known_args.interim_results, "r") as interim_file:
-        for item in interim_file:
-            batch_events.append(eval(item))
-    sorted_data_points = sorted(
-        batch_events, key=lambda x: datetime.strptime(x.time, DATE_FMT)
-    )
-    output = process(sorted_data_points, known_args.time_period_secs, known_args.top_n)
-    output | "write" >> WriteToText(
+    ) | "AddKey" >> beam.Map(
+        add_key
+    ) | "GroupByKey " >> beam.GroupByKey() | "SortGroupedData" >> beam.Map(
+        sort_grouped_data
+    ) | "Detect Sequences" >> beam.Map(
+        detect_sequences, known_args.time_period_secs
+    ) | "Select" >> beam.Map(
+        select, known_args.top_n
+    ) | "Write" >> WriteToText(
         known_args.output, num_shards=1, shard_name_template=""
     )
-    os.remove(known_args.interim_results)
+
+    result = pipeline.run()
+    result.wait_until_finish()
     end = time()
     print("Total time taken %s seconds" % str(end - start))
 

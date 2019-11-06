@@ -2,370 +2,351 @@
 This module contains unittests for functions in beam_batch.py
 """
 import unittest
-from ecobee.beam_batch import DataPoint, to_data_point, process
+from ecobee.beam_batch import (
+    DataPoint,
+    Sequence,
+    to_data_point,
+    detect_sequences,
+    calculate_sec_difference,
+    DATE_FMT,
+    select,
+    add_key,
+    USER_ID,
+    sort_grouped_data,
+)
 
 
 class SorterTest(unittest.TestCase):
     """
     Unit test class for sorter.py
     """
-    def test_read_input(self):
+
+    def test_to_data_point(self):
         """
-        test case for happy path of read_input()
+        test case for happy path of to_data_point()
         :return:
         """
         expected_output = DataPoint("2018-12-03 12:17:38 +0000", "G")
         actual_output = to_data_point("TS:2018-12-03 12:17:38 +0000 GMT, Action:G")
         self.assertEqual(actual_output, expected_output)
 
-    def test_process_case1(self):
+    def test_calculate_sec_difference(self):
         """
-        case when time_period_secs is zero.
-        In this case, each sequence will be just two actions
-        """
-        test_input = [
-            DataPoint("2018-12-03 12:17:38 +0000", "G"),
-            DataPoint("2018-12-03 12:37:13 +0000", "J"),
-            DataPoint("2018-12-03 13:06:41 +0000", "K"),
-            DataPoint("2018-12-03 13:29:15 +0000", "F"),
-            DataPoint("2018-12-03 13:30:56 +0000", "G"),
-            DataPoint("2018-12-03 13:31:43 +0000", "E"),
-            DataPoint("2018-12-03 13:54:15 +0000", "B"),
-            DataPoint("2018-12-03 13:56:33 +0000", "C"),
-            DataPoint("2018-12-03 14:10:26 +0000", "G"),
-            DataPoint("2018-12-03 14:11:24 +0000", "L"),
-            DataPoint("2018-12-03 14:25:44 +0000", "B"),
-            DataPoint("2018-12-03 14:35:25 +0000", "H"),
-            DataPoint("2018-12-03 15:01:32 +0000", "D"),
-            DataPoint("2018-12-03 15:02:46 +0000", "L"),
-            DataPoint("2018-12-03 15:12:07 +0000", "B"),
-            DataPoint("2018-12-03 15:18:59 +0000", "A"),
-            DataPoint("2018-12-03 15:29:03 +0000", "F"),
-            DataPoint("2018-12-03 16:11:35 +0000", "D"),
-        ]
-        top_n_elems = len(test_input)
-        actual_result = process(test_input, 0, top_n_elems)
-        expected_result = [
-            (
-                2552.0,
-                [
-                    ("2018-12-03 15:29:03 +0000", "F"),
-                    ("2018-12-03 16:11:35 +0000", "D"),
-                ],
-            ),
-            (
-                1768.0,
-                [
-                    ("2018-12-03 12:37:13 +0000", "J"),
-                    ("2018-12-03 13:06:41 +0000", "K"),
-                ],
-            ),
-            (
-                1567.0,
-                [
-                    ("2018-12-03 14:35:25 +0000", "H"),
-                    ("2018-12-03 15:01:32 +0000", "D"),
-                ],
-            ),
-            (
-                1354.0,
-                [
-                    ("2018-12-03 13:06:41 +0000", "K"),
-                    ("2018-12-03 13:29:15 +0000", "F"),
-                ],
-            ),
-            (
-                1352.0,
-                [
-                    ("2018-12-03 13:31:43 +0000", "E"),
-                    ("2018-12-03 13:54:15 +0000", "B"),
-                ],
-            ),
-            (
-                1175.0,
-                [
-                    ("2018-12-03 12:17:38 +0000", "G"),
-                    ("2018-12-03 12:37:13 +0000", "J"),
-                ],
-            ),
-            (
-                860.0,
-                [
-                    ("2018-12-03 14:11:24 +0000", "L"),
-                    ("2018-12-03 14:25:44 +0000", "B"),
-                ],
-            ),
-            (
-                833.0,
-                [
-                    ("2018-12-03 13:56:33 +0000", "C"),
-                    ("2018-12-03 14:10:26 +0000", "G"),
-                ],
-            ),
-            (
-                604.0,
-                [
-                    ("2018-12-03 15:18:59 +0000", "A"),
-                    ("2018-12-03 15:29:03 +0000", "F"),
-                ],
-            ),
-            (
-                581.0,
-                [
-                    ("2018-12-03 14:25:44 +0000", "B"),
-                    ("2018-12-03 14:35:25 +0000", "H"),
-                ],
-            ),
-            (
-                561.0,
-                [
-                    ("2018-12-03 15:02:46 +0000", "L"),
-                    ("2018-12-03 15:12:07 +0000", "B"),
-                ],
-            ),
-            (
-                412.0,
-                [
-                    ("2018-12-03 15:12:07 +0000", "B"),
-                    ("2018-12-03 15:18:59 +0000", "A"),
-                ],
-            ),
-            (
-                138.0,
-                [
-                    ("2018-12-03 13:54:15 +0000", "B"),
-                    ("2018-12-03 13:56:33 +0000", "C"),
-                ],
-            ),
-            (
-                101.0,
-                [
-                    ("2018-12-03 13:29:15 +0000", "F"),
-                    ("2018-12-03 13:30:56 +0000", "G"),
-                ],
-            ),
-            (
-                74.0,
-                [
-                    ("2018-12-03 15:01:32 +0000", "D"),
-                    ("2018-12-03 15:02:46 +0000", "L"),
-                ],
-            ),
-            (
-                58.0,
-                [
-                    ("2018-12-03 14:10:26 +0000", "G"),
-                    ("2018-12-03 14:11:24 +0000", "L"),
-                ],
-            ),
-            (
-                47.0,
-                [
-                    ("2018-12-03 13:30:56 +0000", "G"),
-                    ("2018-12-03 13:31:43 +0000", "E"),
-                ],
-            ),
-        ]
-
-        self.assertEqual(actual_result, expected_result)
-
-    def test_process_case2(self):
-        """
-        case when time_period is non zero, but not too big
-        In this case, we will sequences with various sizes
+        test happy path for calculate_sec_difference
         :return:
         """
+        timestamp1 = "2018-12-03 12:17:38 +0000"
+        timestamp2 = "2018-12-03 13:17:38 +0000"
+        result = calculate_sec_difference(timestamp1, timestamp2, DATE_FMT)
+        self.assertEqual(result, 3600)
+
+    def test_detect_sequences_case1(self):
+        """
+        case when time_period is 1 hour, and each consecutive record
+        in within an hour of its neighbour
+        In this case, all the records will fall in same sequence
+        """
+        first_timestamp = "2018-12-03 12:17:38 +0000"
+        last_timestamp = "2018-12-03 13:37:38 +0000"
         test_input = [
-            DataPoint("2018-12-03 12:17:38 +0000", "G"),
+            DataPoint(first_timestamp, "G"),
             DataPoint("2018-12-03 12:37:13 +0000", "J"),
             DataPoint("2018-12-03 13:06:41 +0000", "K"),
-            DataPoint("2018-12-03 13:29:15 +0000", "F"),
-            DataPoint("2018-12-03 13:30:56 +0000", "G"),
-            DataPoint("2018-12-03 13:31:43 +0000", "E"),
-            DataPoint("2018-12-03 13:54:15 +0000", "B"),
-            DataPoint("2018-12-03 13:56:33 +0000", "C"),
-            DataPoint("2018-12-03 14:10:26 +0000", "G"),
-            DataPoint("2018-12-03 14:11:24 +0000", "L"),
-            DataPoint("2018-12-03 14:25:44 +0000", "B"),
-            DataPoint("2018-12-03 14:35:25 +0000", "H"),
-            DataPoint("2018-12-03 15:01:32 +0000", "D"),
-            DataPoint("2018-12-03 15:02:46 +0000", "L"),
-            DataPoint("2018-12-03 15:12:07 +0000", "B"),
-            DataPoint("2018-12-03 15:18:59 +0000", "A"),
-            DataPoint("2018-12-03 15:29:03 +0000", "F"),
-            DataPoint("2018-12-03 16:11:35 +0000", "D"),
+            DataPoint("2018-12-03 13:20:15 +0000", "F"),
+            DataPoint("2018-12-03 13:31:56 +0000", "G"),
+            DataPoint(last_timestamp, "E"),
         ]
-        top_n_elems = len(test_input)
-        time_period = 600  # 10 minutes
-        actual_result = process(test_input, time_period, top_n_elems)
+        time_period_secs = 3600
+        actual_result = detect_sequences(test_input, time_period_secs)
         expected_result = [
-            (
-                2552.0,
+            Sequence(
+                calculate_sec_difference(last_timestamp, first_timestamp, DATE_FMT),
                 [
-                    ("2018-12-03 15:29:03 +0000", "F"),
-                    ("2018-12-03 16:11:35 +0000", "D"),
-                ],
-            ),
-            (
-                1768.0,
-                [
-                    ("2018-12-03 12:37:13 +0000", "J"),
-                    ("2018-12-03 13:06:41 +0000", "K"),
-                ],
-            ),
-            (
-                1354.0,
-                [
-                    ("2018-12-03 13:06:41 +0000", "K"),
-                    ("2018-12-03 13:29:15 +0000", "F"),
-                ],
-            ),
-            (
-                1175.0,
-                [
-                    ("2018-12-03 12:17:38 +0000", "G"),
-                    ("2018-12-03 12:37:13 +0000", "J"),
-                ],
-            ),
-            (
-                1047.0,
-                [
-                    ("2018-12-03 15:01:32 +0000", "D"),
-                    ("2018-12-03 15:02:46 +0000", "L"),
-                    ("2018-12-03 15:12:07 +0000", "B"),
-                    ("2018-12-03 15:18:59 +0000", "A"),
-                ],
-            ),
-            (
-                581.0,
-                [
-                    ("2018-12-03 14:25:44 +0000", "B"),
-                    ("2018-12-03 14:35:25 +0000", "H"),
-                ],
-            ),
-            (
-                148.0,
-                [
-                    ("2018-12-03 13:29:15 +0000", "F"),
-                    ("2018-12-03 13:30:56 +0000", "G"),
-                    ("2018-12-03 13:31:43 +0000", "E"),
-                ],
-            ),
-            (
-                138.0,
-                [
-                    ("2018-12-03 13:54:15 +0000", "B"),
-                    ("2018-12-03 13:56:33 +0000", "C"),
-                ],
-            ),
-            (
-                58.0,
-                [
-                    ("2018-12-03 14:10:26 +0000", "G"),
-                    ("2018-12-03 14:11:24 +0000", "L"),
-                ],
-            ),
-        ]
-
-        self.assertEqual(actual_result, expected_result)
-
-        actual_result = process(test_input, time_period, 5)
-        expected_result = [
-            (
-                2552.0,
-                [
-                    ("2018-12-03 15:29:03 +0000", "F"),
-                    ("2018-12-03 16:11:35 +0000", "D"),
-                ],
-            ),
-            (
-                1768.0,
-                [
-                    ("2018-12-03 12:37:13 +0000", "J"),
-                    ("2018-12-03 13:06:41 +0000", "K"),
-                ],
-            ),
-            (
-                1354.0,
-                [
-                    ("2018-12-03 13:06:41 +0000", "K"),
-                    ("2018-12-03 13:29:15 +0000", "F"),
-                ],
-            ),
-            (
-                1175.0,
-                [
-                    ("2018-12-03 12:17:38 +0000", "G"),
-                    ("2018-12-03 12:37:13 +0000", "J"),
-                ],
-            ),
-            (
-                1047.0,
-                [
-                    ("2018-12-03 15:01:32 +0000", "D"),
-                    ("2018-12-03 15:02:46 +0000", "L"),
-                    ("2018-12-03 15:12:07 +0000", "B"),
-                    ("2018-12-03 15:18:59 +0000", "A"),
-                ],
-            ),
-        ]
-        self.assertEqual(actual_result, expected_result)
-
-    def test_process_case3(self):
-        """
-        case when time_period is too big, so that all event are considered one big sequence
-        :return:
-        """
-        test_input = [
-            DataPoint("2018-12-03 12:17:38 +0000", "G"),
-            DataPoint("2018-12-03 12:37:13 +0000", "J"),
-            DataPoint("2018-12-03 13:06:41 +0000", "K"),
-            DataPoint("2018-12-03 13:29:15 +0000", "F"),
-            DataPoint("2018-12-03 13:30:56 +0000", "G"),
-            DataPoint("2018-12-03 13:31:43 +0000", "E"),
-            DataPoint("2018-12-03 13:54:15 +0000", "B"),
-            DataPoint("2018-12-03 13:56:33 +0000", "C"),
-            DataPoint("2018-12-03 14:10:26 +0000", "G"),
-            DataPoint("2018-12-03 14:11:24 +0000", "L"),
-            DataPoint("2018-12-03 14:25:44 +0000", "B"),
-            DataPoint("2018-12-03 14:35:25 +0000", "H"),
-            DataPoint("2018-12-03 15:01:32 +0000", "D"),
-            DataPoint("2018-12-03 15:02:46 +0000", "L"),
-            DataPoint("2018-12-03 15:12:07 +0000", "B"),
-            DataPoint("2018-12-03 15:18:59 +0000", "A"),
-            DataPoint("2018-12-03 15:29:03 +0000", "F"),
-            DataPoint("2018-12-03 16:11:35 +0000", "D"),
-        ]
-        top_n_elems = len(test_input)
-        time_period = 3600  # 1 hour
-        actual_result = process(test_input, time_period, top_n_elems)
-        expected_result = [
-            (
-                14037.0,
-                [
-                    ("2018-12-03 12:17:38 +0000", "G"),
-                    ("2018-12-03 12:37:13 +0000", "J"),
-                    ("2018-12-03 13:06:41 +0000", "K"),
-                    ("2018-12-03 13:29:15 +0000", "F"),
-                    ("2018-12-03 13:30:56 +0000", "G"),
-                    ("2018-12-03 13:31:43 +0000", "E"),
-                    ("2018-12-03 13:54:15 +0000", "B"),
-                    ("2018-12-03 13:56:33 +0000", "C"),
-                    ("2018-12-03 14:10:26 +0000", "G"),
-                    ("2018-12-03 14:11:24 +0000", "L"),
-                    ("2018-12-03 14:25:44 +0000", "B"),
-                    ("2018-12-03 14:35:25 +0000", "H"),
-                    ("2018-12-03 15:01:32 +0000", "D"),
-                    ("2018-12-03 15:02:46 +0000", "L"),
-                    ("2018-12-03 15:12:07 +0000", "B"),
-                    ("2018-12-03 15:18:59 +0000", "A"),
-                    ("2018-12-03 15:29:03 +0000", "F"),
-                    ("2018-12-03 16:11:35 +0000", "D"),
+                    DataPoint(first_timestamp, "G"),
+                    DataPoint("2018-12-03 12:37:13 +0000", "J"),
+                    DataPoint("2018-12-03 13:06:41 +0000", "K"),
+                    DataPoint("2018-12-03 13:20:15 +0000", "F"),
+                    DataPoint("2018-12-03 13:31:56 +0000", "G"),
+                    DataPoint(last_timestamp, "E"),
                 ],
             )
         ]
-
         self.assertEqual(actual_result, expected_result)
+
+    def test_detect_sequences_case2(self):
+        """
+        time_period is 30 minutes,
+        case when first 3 records fall in one sequence, last 3 in the next
+        :return:
+        """
+        first_seq_start_timestamp = "2018-12-03 12:17:38 +0000"
+        first_seq_end_timestamp = "2018-12-03 12:19:41 +0000"
+        second_seq_start_timestamp = "2018-12-03 13:20:15 +0000"
+        second_seq_end_timestamp = "2018-12-03 13:37:38 +0000"
+
+        test_input = [
+            DataPoint(first_seq_start_timestamp, "G"),
+            DataPoint("2018-12-03 12:18:13 +0000", "J"),
+            DataPoint(first_seq_end_timestamp, "K"),
+            DataPoint(second_seq_start_timestamp, "F"),
+            DataPoint("2018-12-03 13:31:56 +0000", "G"),
+            DataPoint(second_seq_end_timestamp, "E"),
+        ]
+
+        time_period_secs = 1800  # 30 minutes
+        actual_result = detect_sequences(test_input, time_period_secs)
+        expected_result = [
+            Sequence(
+                calculate_sec_difference(
+                    first_seq_end_timestamp, first_seq_start_timestamp, DATE_FMT
+                ),
+                [
+                    DataPoint(first_seq_start_timestamp, "G"),
+                    DataPoint("2018-12-03 12:18:13 +0000", "J"),
+                    DataPoint(first_seq_end_timestamp, "K"),
+                ],
+            ),
+            Sequence(
+                calculate_sec_difference(
+                    second_seq_end_timestamp, second_seq_start_timestamp, DATE_FMT
+                ),
+                [
+                    DataPoint(second_seq_start_timestamp, "F"),
+                    DataPoint("2018-12-03 13:31:56 +0000", "G"),
+                    DataPoint(second_seq_end_timestamp, "E"),
+                ],
+            ),
+        ]
+        self.assertEqual(actual_result, expected_result)
+
+    def test_detect_sequences_case3(self):
+        """
+        time period is 30 minutes
+        case when first 3 records fall in one sequence, next 2 in the second sequence,
+        last sequence has only one element and therefore the sequence length of this one is zero
+        :return:
+        """
+        first_seq_start_timestamp = "2018-12-03 12:17:38 +0000"
+        first_seq_end_timestamp = "2018-12-03 12:19:41 +0000"
+        second_seq_start_timestamp = "2018-12-03 13:20:15 +0000"
+        second_seq_end_timestamp = "2018-12-03 13:37:38 +0000"
+
+        test_input = [
+            DataPoint(first_seq_start_timestamp, "G"),
+            DataPoint("2018-12-03 12:18:13 +0000", "J"),
+            DataPoint(first_seq_end_timestamp, "K"),
+            DataPoint(second_seq_start_timestamp, "F"),
+            DataPoint(second_seq_end_timestamp, "E"),
+            DataPoint("2018-12-03 14:37:38 +0000", "E"),
+        ]
+
+        time_period_secs = 1800  # 30 minutes
+        actual_result = detect_sequences(test_input, time_period_secs)
+        expected_result = [
+            Sequence(
+                calculate_sec_difference(
+                    first_seq_end_timestamp, first_seq_start_timestamp, DATE_FMT
+                ),
+                [
+                    DataPoint(first_seq_start_timestamp, "G"),
+                    DataPoint("2018-12-03 12:18:13 +0000", "J"),
+                    DataPoint(first_seq_end_timestamp, "K"),
+                ],
+            ),
+            Sequence(
+                calculate_sec_difference(
+                    second_seq_end_timestamp, second_seq_start_timestamp, DATE_FMT
+                ),
+                [
+                    DataPoint(second_seq_start_timestamp, "F"),
+                    DataPoint(second_seq_end_timestamp, "E"),
+                ],
+            ),
+            Sequence(0, [DataPoint("2018-12-03 14:37:38 +0000", "E")]),
+        ]
+        self.assertEqual(actual_result, expected_result)
+
+    def test_detect_sequences_case4(self):
+        """
+        In this case, time period is 0 seconds. Since each record is more than 0 seconds apart
+        from its neighbour, the result will have as many sequences as the events,
+        with each sequence being single size and sequence length 0
+        :return:
+        """
+        event_1_timestamp = "2018-12-03 12:17:38 +0000"
+        event_2_timestamp = "2018-12-03 12:37:13 +0000"
+        event_3_timestamp = "2018-12-03 13:06:41 +0000"
+        event_4_timestamp = "2018-12-03 13:20:15 +0000"
+        test_input = [
+            DataPoint(event_1_timestamp, "G"),
+            DataPoint(event_2_timestamp, "J"),
+            DataPoint(event_3_timestamp, "K"),
+            DataPoint(event_4_timestamp, "F"),
+        ]
+
+        time_period_secs = 0
+        actual_result = detect_sequences(test_input, time_period_secs)
+        expected_result = [
+            Sequence(0, [DataPoint(event_1_timestamp, "G")]),
+            Sequence(0, [DataPoint(event_2_timestamp, "J")]),
+            Sequence(0, [DataPoint(event_3_timestamp, "K")]),
+            Sequence(0, [DataPoint(event_4_timestamp, "F")]),
+        ]
+        self.assertEqual(actual_result, expected_result)
+
+    def test_select_case1(self):
+        """
+        There are more sequences than what we want to select
+        :return:
+        """
+        sequences = [
+            Sequence(
+                300,
+                [
+                    DataPoint("2018-12-03 12:17:39 +0000", "G"),
+                    DataPoint("2018-12-03 12:22:39 +0000", "J"),
+                ],
+            ),
+            Sequence(
+                1200,
+                [
+                    DataPoint("2018-12-03 12:17:38 +0000", "G"),
+                    DataPoint("2018-12-03 12:37:38 +0000", "J"),
+                ],
+            ),
+            Sequence(
+                60,
+                [
+                    DataPoint("2018-12-03 13:17:01 +0000", "G"),
+                    DataPoint("2018-12-03 13:18:01 +0000", "J"),
+                ],
+            ),
+            Sequence(
+                600,
+                [
+                    DataPoint("2018-12-03 13:17:38 +0000", "G"),
+                    DataPoint("2018-12-03 13:27:38 +0000", "J"),
+                ],
+            ),
+        ]
+        top_n = 2
+        expected_result = [
+            (
+                1200,
+                [
+                    ("2018-12-03 12:17:38 +0000", "G"),
+                    ("2018-12-03 12:37:38 +0000", "J"),
+                ],
+            ),
+            (
+                600,
+                [
+                    ("2018-12-03 13:17:38 +0000", "G"),
+                    ("2018-12-03 13:27:38 +0000", "J"),
+                ],
+            ),
+        ]
+        actual_result = select(sequences, top_n)
+        self.assertEqual(actual_result, expected_result)
+
+    def test_select_case2(self):
+        """
+        There are less sequences than what we want to select
+        :return:
+        """
+        sequences = [
+            Sequence(
+                300,
+                [
+                    DataPoint("2018-12-03 12:17:39 +0000", "G"),
+                    DataPoint("2018-12-03 12:22:39 +0000", "J"),
+                ],
+            ),
+            Sequence(
+                1200,
+                [
+                    DataPoint("2018-12-03 12:17:38 +0000", "G"),
+                    DataPoint("2018-12-03 12:37:38 +0000", "J"),
+                ],
+            ),
+            Sequence(
+                60,
+                [
+                    DataPoint("2018-12-03 13:17:01 +0000", "G"),
+                    DataPoint("2018-12-03 13:18:01 +0000", "J"),
+                ],
+            ),
+            Sequence(
+                600,
+                [
+                    DataPoint("2018-12-03 13:17:38 +0000", "G"),
+                    DataPoint("2018-12-03 13:27:38 +0000", "J"),
+                ],
+            ),
+        ]
+        top_n = 20
+        expected_result = [
+            (
+                1200,
+                [
+                    ("2018-12-03 12:17:38 +0000", "G"),
+                    ("2018-12-03 12:37:38 +0000", "J"),
+                ],
+            ),
+            (
+                600,
+                [
+                    ("2018-12-03 13:17:38 +0000", "G"),
+                    ("2018-12-03 13:27:38 +0000", "J"),
+                ],
+            ),
+            (
+                300,
+                [
+                    ("2018-12-03 12:17:39 +0000", "G"),
+                    ("2018-12-03 12:22:39 +0000", "J"),
+                ],
+            ),
+            (
+                60,
+                [
+                    ("2018-12-03 13:17:01 +0000", "G"),
+                    ("2018-12-03 13:18:01 +0000", "J"),
+                ],
+            ),
+        ]
+        actual_result = select(sequences, top_n)
+        self.assertEqual(actual_result, expected_result)
+
+    def test_add_key(self):
+        """
+        test for add_key happy path
+        :return:
+        """
+        value = "dummy"
+        result = add_key(value)
+        self.assertEqual((USER_ID, value), result)
+
+    def test_sort_grouped_data(self):
+        """
+        test for sort_grouped_data happy path
+        :return:
+        """
+        test_input = (
+            USER_ID,
+            [
+                DataPoint("2018-12-03 12:17:39 +0000", "G"),
+                DataPoint("2018-12-03 12:15:39 +0000", "J"),
+                DataPoint("2018-12-03 12:14:39 +0000", "J"),
+            ],
+        )
+        expected = [
+            DataPoint("2018-12-03 12:14:39 +0000", "J"),
+            DataPoint("2018-12-03 12:15:39 +0000", "J"),
+            DataPoint("2018-12-03 12:17:39 +0000", "G"),
+        ]
+        result = sort_grouped_data(test_input)
+        self.assertEqual(expected, result)
 
 
 if __name__ == "__main__":

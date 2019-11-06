@@ -130,7 +130,7 @@ def parse(argv):
     parser.add_argument(
         "--input",
         dest="input",
-        default="test_actions.txt",
+        default="input.txt",
         help="Input file to process.",
     )
     parser.add_argument(

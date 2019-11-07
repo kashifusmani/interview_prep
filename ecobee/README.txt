@@ -1,5 +1,5 @@
 1. pip install -r requirements.txt
-2. python beam_batch.py --input /full/path/to/input.txt --output /full/path/to/output.txt --top-n 20 --time-period-secs 300
+2. python top_n_batch.py --input /full/path/to/input.txt --output /full/path/to/output.txt --top-n 20 --time-period-secs 300
     2.1 All of the input parameters are optional with default values
 3. Solution Explanation:
     3. 1: Assumptions and Definitions:

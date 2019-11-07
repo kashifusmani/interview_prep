@@ -1,9 +1,8 @@
 """
-beam_batch.py
+top_n_batch.py
 This module is responsible for calculating the
 top-n occurring sequences in given list of events
 """
-import argparse
 import logging
 from collections import namedtuple
 from datetime import datetime
@@ -14,6 +13,9 @@ from apache_beam.io import ReadFromText
 from apache_beam.io import WriteToText
 from apache_beam.options.pipeline_options import PipelineOptions
 from apache_beam.options.pipeline_options import SetupOptions
+
+from parser_utils import parse_top_n_job_args
+
 
 DataPoint = namedtuple("DataPoint", ["time", "action"])
 Sequence = namedtuple("Sequence", ["seq_len", "datapoints"])
@@ -119,39 +121,6 @@ def sort_grouped_data(row):
     return sorted(data, key=lambda x: datetime.strptime(x.time, DATE_FMT))
 
 
-def parse(argv):
-    """
-    Parse the given command line arguments.
-    :param argv:
-    :return: known and unknown args
-    """
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--input",
-        dest="input",
-        default="input.txt",
-        help="Input file to process.",
-    )
-    parser.add_argument(
-        "--output",
-        dest="output",
-        default="output.txt",
-        help="Output file to write results to.",
-    )
-    parser.add_argument(
-        "--top-n", default=10, type=int, help="Number of top entries to report."
-    )
-    parser.add_argument(
-        "--time-period-secs",
-        default=0,
-        type=int,
-        help="If two events are apart by this value of time, "
-        "they are considered in separate sequences.",
-    )
-    return parser.parse_known_args(argv)
-
-
 def run(argv=None, save_main_session=True):
     """
     Main runner function
@@ -159,7 +128,7 @@ def run(argv=None, save_main_session=True):
     :param save_main_session:
     :return:
     """
-    known_args, pipeline_args = parse(argv)
+    known_args, pipeline_args = parse_top_n_job_args(argv)
     start = time()
     pipeline_options = PipelineOptions(pipeline_args)
     pipeline_options.view_as(SetupOptions).save_main_session = save_main_session

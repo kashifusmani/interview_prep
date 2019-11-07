@@ -1,8 +1,8 @@
 """
-This module contains unittests for functions in beam_batch.py
+This module contains unittests for functions in top_n_batch.py
 """
 import unittest
-from ecobee.beam_batch import (
+from top_n_batch import (
     DataPoint,
     Sequence,
     to_data_point,

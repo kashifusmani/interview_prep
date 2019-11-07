@@ -13,10 +13,11 @@ from top_n_batch import (
     add_key,
     USER_ID,
     sort_grouped_data,
+    format_output,
 )
 
 
-class SorterTest(unittest.TestCase):
+class TopNBatchTest(unittest.TestCase):
     """
     Unit test class for sorter.py
     """
@@ -347,6 +348,14 @@ class SorterTest(unittest.TestCase):
         ]
         result = sort_grouped_data(test_input)
         self.assertEqual(expected, result)
+
+    def test_format_output(self):
+        """
+        test case for happy path
+        :return:
+        """
+        input_data = ["1", "2"]
+        self.assertEqual("\n".join(input_data), format_output(input_data))
 
 
 if __name__ == "__main__":

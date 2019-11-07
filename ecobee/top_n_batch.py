@@ -99,6 +99,7 @@ def select(sequences, top_n):
         )
         for i in range(0, min(top_n, len(all_sequences_sorted)))
     ]
+    # return '\n'.join(str(elem) for elem in top_n_results)
 
 
 def add_key(row):
@@ -121,6 +122,15 @@ def sort_grouped_data(row):
     return sorted(data, key=lambda x: datetime.strptime(x.time, DATE_FMT))
 
 
+def format_output(results):
+    """
+    format the results, so that each entry is on one line
+    :param results:
+    :return:
+    """
+    return "\n".join(str(elem) for elem in results)
+
+
 def run(argv=None, save_main_session=True):
     """
     Main runner function
@@ -140,10 +150,12 @@ def run(argv=None, save_main_session=True):
         add_key
     ) | "GroupByKey " >> beam.GroupByKey() | "SortGroupedData" >> beam.Map(
         sort_grouped_data
-    ) | "Detect Sequences" >> beam.Map(
+    ) | "DetectSequences" >> beam.Map(
         detect_sequences, known_args.time_period_secs
-    ) | "Select" >> beam.Map(
+    ) | "SelectTopN" >> beam.Map(
         select, known_args.top_n
+    ) | "FormatOutput" >> beam.Map(
+        format_output
     ) | "Write" >> WriteToText(
         known_args.output, num_shards=1, shard_name_template=""
     )

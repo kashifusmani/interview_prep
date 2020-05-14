@@ -148,7 +148,8 @@ def run(argv=None, save_main_session=True):
         to_data_point
     ) | "AddKey" >> beam.Map(
         add_key
-    ) | "GroupByKey " >> beam.GroupByKey() | "SortGroupedData" >> beam.Map(
+    ) | "GroupByKey " >> beam.GroupByKey(
+    ) | "SortGroupedData" >> beam.Map(
         sort_grouped_data
     ) | "DetectSequences" >> beam.Map(
         detect_sequences, known_args.time_period_secs

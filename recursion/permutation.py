@@ -16,5 +16,5 @@ def is_perm(a,b):#TODO make it work
 
 
 if __name__ == '__main__':
-    #print(permute('abcd'))
-    print(is_perm('AB', 'BAC'))
+    print(permute('abcd'))
+    #print(is_perm('AB', 'BAC'))

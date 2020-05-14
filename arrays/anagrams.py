@@ -24,6 +24,7 @@ def is_anagram(a,b):
             return False
     return True
 
+
 if __name__ == '__main__':
     print(is_anagram('public relations', 'crap built on lies'))
     print(is_anagram('clint eastwood', 'old west action'))

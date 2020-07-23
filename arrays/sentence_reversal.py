@@ -13,7 +13,6 @@ def rev_word(s):
                 elem_start = ind + 1
                 elem_end = ind
 
-
     start = 0
     end = len(splitted) - 1
     while start < end:

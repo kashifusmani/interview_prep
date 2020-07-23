@@ -5,7 +5,7 @@ def large_cont_sum(arr):
     start = end = 0
 
     for ind, elem in enumerate(arr[1:]):
-        if current_sum + elem > elem:
+        if current_sum + elem > elem: #Possible optimization?? current_sum > 0
             current_sum = current_sum + elem
         else:
             current_sum = elem # If current + elem is less than the elem itself ( because elem is negative), better to reset the current_sum

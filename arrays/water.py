@@ -1,28 +1,29 @@
+#For every element of the array, find the maximum element on its left and maximum on its right
+#O(n^2)
 def maxWater(arr, n) :
-
-    # To store the maximum water
-    # that can be stored
-    res = 0;
+    res = 0
 
     # For every element of the array
     for i in range(1, n - 1) :
 
         # Find the maximum element on its left
-        left = arr[i];
+        left = arr[i]
         for j in range(i) :
-            left = max(left, arr[j]);
+            left = max(left, arr[j])
 
             # Find the maximum element on its right
-        right = arr[i];
+        right = arr[i]
 
         for j in range(i + 1 , n) :
-            right = max(right, arr[j]);
+            right = max(right, arr[j])
 
             # Update the maximum water
-        res = res + (min(left, right) - arr[i]);
+        res = res + (min(left, right) - arr[i])
 
-    return res;
+    return res
 
+#Pre compoute the max left and max right values
+#O(n)
 def findWater(arr, n):
 
     # left[i] contains height of tallest bar to the
@@ -44,7 +45,7 @@ def findWater(arr, n):
         # Fill right array
     right[n-1] = arr[n-1]
     for i in range(n-2, -1, -1):
-        right[i] = max(right[i + 1], arr[i]);
+        right[i] = max(right[i + 1], arr[i])
 
         # Calculate the accumulated water element by element
     # consider the amount of water on i'th bar, the
@@ -59,6 +60,7 @@ def findWater(arr, n):
 # maximum amount of water that can
 # be trapped within given set of bars.
 # Space Complexity : O(1)
+
 
 def findWater_2(arr, n):
 

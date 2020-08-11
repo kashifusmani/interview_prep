@@ -16,9 +16,7 @@ def maxHeight(wallPositions, wallHeights):
             arr[i] = new_height
             if new_height > max_height:
                 max_height = new_height
-        else:
-            if arr[i] > max_height:
-                max_height = arr[i]
+
     return max_height
 
 

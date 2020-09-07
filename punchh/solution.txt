@@ -1,0 +1,4 @@
+imporvements
+
+# improve record validation with proper message,
+# Add multiprocessing

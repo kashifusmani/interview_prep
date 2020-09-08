@@ -1,4 +1,101 @@
-imporvements
+1. Script to load the data
 
-# improve record validation with proper message,
+    The script is present under punchh/app/data_loader.py
+
+2. Table(s) design 
+
+    Since I am working with only email dataset, there is only one table to hold all the data. The table schema is present under punchh/db/init.sql
+
+3. Assumptions
+
+    a. The script assumes that the input data contains one record per line, each record being a json record.
+    b. The script also assumes that all the data is present in just one file. To process multiple files, code changes are required.
+
+
+4: SQL
+
+    4.1 SQL to Get emails of users who opened email
+    Answer:
+            select
+                distinct(email)
+            from
+            email_campaigns
+            where event='open';
+
+    4.2 No. of users who opened emails between 1-2 days, 2-5 days and > 5 days after email is sent. Ex : If the email is sent 21st, # of users who opened email between 23rd and 26th including both 23rd and 26th
+    Answer:
+            select
+                count(distinct(email)),
+                case
+                    when (email_timestamp::date - campaign_date) < 2  then 'less_than_2 days'
+                    when (email_timestamp::date - campaign_date) >= 2 and (email_timestamp::date - campaign_date) <= 5  then 'between 2 and 5 days'
+                    else '5 or more days'
+                end as days_interval
+            from email_campaigns
+            where event='open'
+            group by days_interval;
+
+
+    4.3 Identify the campaign which is more successful ? ( define what you think success means and write sql) 
+
+    Answer:
+        a. If we define "success" by number of users who opened our email, then the campaign with most emails opened is the campaign that is most successful
+
+            select
+                count(distinct(email)),
+                campaign_name from email_campaigns
+            where event='open'
+            group by campaign_name
+            order by count desc
+
+        b. Success can also be calculated as ratio of number of emails opened divided by number of emails delivered
+
+            select
+                (total_opened / total_delivered ) as opened_percentage,
+                campaign_name
+                from
+                    (
+                    select
+                        cast(sum(case when event='open' then 1 else 0 end) as decimal)  as total_opened,
+                        cast(sum(case when  event='delivered' then 1 else 0 end) as decimal) as total_delivered,
+                        campaign_name from email_campaigns group by campaign_name
+                    ) as totals
+            where
+            total_delivered > 0
+            order by opened_percentage desc;
+
+
+        c. However, if we also factor in number of people who unsubscribed, then the campaign with max(email opened - unsubscribed) is the most successful
+
+                select
+                    (total_opened - total_unsubscribed) as net_gains,
+                    campaign_name
+                from
+                    (
+                    select
+                        cast(sum(case when event='open' then 1 else 0 end) as decimal) as total_opened,
+                        cast(sum(case when event='unsubscribe' then 1 else 0 end) as decimal) as total_unsubscribed,
+                        campaign_name
+                    from
+                    email_campaigns
+                    group by campaign_name
+                    ) as totals
+                order by net_gains desc;
+
+        d. A campaign can also be defined successful by the average time people took to open the email after it was sent.
+
+            select
+                avg(email_timestamp::date - campaign_date) as time_to_open,
+                campaign_name from email_campaigns
+            group by campaign_name
+            order by time_to_open desc;
+
+
+5. Dockerize the solution:
+
+    The solution is dockerized.
+
+6. Any test cases you can think of ?
+
+
 # Add multiprocessing

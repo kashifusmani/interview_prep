@@ -1,21 +1,31 @@
-version: '3.1'
+version: "3.5"
 
 services:
-  db:
-    image: mysql:8.0.21
-    command: mysqld --init-file="/docker-entrypoint-initdb.d/init.sql"
-    ports:
-      - "30000:3306"
+  postgres-db:
+    image: postgres:12.4
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
     volumes:
-      - ./db:/docker-entrypoint-initdb.d/:ro
-      - ./data:/data
+      - ./.postgres-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env
 
   app:
     build: ./app
+    command: |
+      python /app/data_loader.py
+        --host postgres-db
+        --port 5432
+        --user ${POSTGRES_USER}
+        --database ${POSTGRES_DB}
+        --password ${POSTGRES_PASSWORD}
+        --input-file /data/email.json.gz
+        --error-file /data/error_records.txt
+        --insert-batch-size 10000
     depends_on:
-      - db
-    ports:
-      - "5000:5000"
+      - postgres-db
+    volumes:
+      - ./app:/app
+      - ./data:/data

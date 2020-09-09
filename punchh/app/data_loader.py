@@ -1,13 +1,16 @@
+import argparse
 import gzip
+from datetime import datetime
 from json import loads, JSONDecodeError
+from time import sleep
+
 import psycopg2
 from psycopg2 import DatabaseError
 from psycopg2.extras import execute_batch
-import argparse
-from datetime import datetime
-from time import sleep
 
-date_fmt = "%Y-%m-%d"
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -23,14 +26,24 @@ def get_args():
 
 
 def batch_insert(cursor, entries):
-    try:
-        stmt = """INSERT INTO email_campaigns
-                (business_id, campaign_date, email, event, campaign_name, sg_event_id, sg_message_id, email_timestamp)
+    insert_stmt = """INSERT INTO email_campaigns
+                (business_id, campaign_date, email, event,
+                campaign_name, sg_event_id, sg_message_id, email_timestamp)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, to_timestamp(%s))"""
-        execute_batch(cursor, stmt, entries)
-        print("Inserted %d entries" % len(entries))
+    try:
+        execute_batch(cursor, insert_stmt, entries)
+        logging.info("Inserted %d entries" % len(entries))
     except DatabaseError as e:
-        print(e)
+        logging.error(e)
+
+
+date_fmt = "%Y-%m-%d"
+
+
+def validate_str(value, field):
+    if not (type(value) == str and len(value) > 0):
+        return field + " must be specified as string and be non empty \n"
+    return ''
 
 
 def validate_row(json_data):
@@ -41,23 +54,16 @@ def validate_row(json_data):
     if not type(json_data["date"]) == str:
         message += 'date must be specified as string \n'
 
-    if not datetime.strptime(json_data["date"], date_fmt):
-        message += 'date must be specified in format' + date_fmt + '\n'
+    try:
+        datetime.strptime(json_data["date"], date_fmt)
+    except:
+        message += 'date must be specified in format ' + date_fmt + '\n'
 
-    if not (type(json_data["email"]) == str and len(json_data["email"]) > 0):
-        message += 'email must be specified as string and be non empty\n'
-
-    if not (type(json_data["event"]) == str and len(json_data["event"]) > 0):
-        message += 'event must be specified as string and be non empty\n'
-
-    if not (type(json_data["campaign_name"]) == str and len(json_data["campaign_name"]) > 0):
-        message += 'campaign_name must be specified as string and be non empty\n'
-
-    if not (type(json_data["sg_event_id"]) == str and len(json_data["sg_event_id"]) > 0):
-        message += 'sg_event_id must be specified as string and be non empty\n'
-
-    if not (type(json_data["sg_message_id"]) == str and len(json_data["sg_message_id"]) > 0):
-        message += 'sg_message_id must be specified as string and be non empty\n'
+    message += validate_str(json_data["email"], 'email')
+    message += validate_str(json_data["event"], 'event')
+    message += validate_str(json_data["campaign_name"], 'campaign_name')
+    message += validate_str(json_data["sg_event_id"], 'sg_event_id')
+    message += validate_str(json_data["sg_message_id"], 'sg_message_id')
 
     if not (type(json_data["timestamp"]) == int and json_data["timestamp"] > 0):
         message += 'timestamp must be specified as int and be greater than zero\n'
@@ -109,30 +115,34 @@ def process_data(db, content):
 if __name__ == "__main__":
     args = get_args()
     while True:
-        # This happens because its hard to control the order in which containers are brought up
+        # This happens because its hard to control
+        # the order in which containers are brought up
         try:
             conn = psycopg2.connect(
-                host=args.host, user=args.user, password=args.password, dbname=args.database, port=args.port
+                host=args.host, user=args.user, password=args.password,
+                dbname=args.database, port=args.port
             )
             break
         except Exception as e:
-            print("Exception while trying to connect, retrying in 5 seconds")
-            print(e)
+            logging.error(
+                "Exception while trying to connect, retrying in 5 seconds")
+            logging.error(e)
             sleep(5)
-    print("Connection succeeded")
+    logging.info("Connection succeeded")
 
     with gzip.open(args.input_file, 'rb') as f:
         content = f.readlines()
     error_list = process_data(conn, content)
 
     if error_list:
-        print("There are %d errors, writing to %s" % (len(error_list), args.error_file))
+        logging.error("There are %d errors, writing to %s" % (
+            len(error_list), args.error_file))
         with open(args.error_file, 'w') as f:
             for message, entry in error_list:
                 f.write("%s\n" % message)
                 f.write("%s\n" % entry)
                 f.write("=====\n")
 
-        print("Done writing errors ")
+        logging.info("Done writing errors ")
     if conn is not None:
         conn.close()

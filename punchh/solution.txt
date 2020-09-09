@@ -1,6 +1,9 @@
 1. Script to load the data
-
-    The script is present under punchh/app/data_loader.py
+    a. Change the work directory to punchh
+    b. Copy the email.json.gz under data/
+    c. docker-compose build
+    d. docker-compose up
+    Step c will automatically run the script present under punchh/app/data_loader.py
 
 2. Table(s) design 
 
@@ -112,6 +115,8 @@
 
     3. We can also test against the definition of "successful" campaign as defined in 4.3.
 
+    4. Unit tests have been omitted due ot lack of time. But I would definitely add lots of them.
+
 7) How would you design it if it was streaming data ?
 
    If this was streaming data then the following changes could have been made:
@@ -137,3 +142,9 @@
         "open" -> "unsubscribe"
 
    - In the sample input email.json.gz, all emails were opened the same day as they were sent.
+
+
+9. If I had more time, then I would have made the following improvements
+    a. Add unit tests
+    b. Use a decorator to encapsulate database connection
+    c. Use cerberus Json schema validator (But it can affect the speed of load script)

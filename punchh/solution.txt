@@ -8,8 +8,10 @@
 
 3. Assumptions
 
-    a. The script assumes that the input data contains one record per line, each record being a json record.
-    b. The script also assumes that all the data is present in just one file. To process multiple files, code changes are required.
+    a. The data loading script assumes that the input data contains one record per line, each record being a json record.
+    b. The data loading script also assumes that all the data is present in just one file. To process multiple files, code changes are required.
+    c. The data loading script assumes that a record could be malformed or individual values could be incorrect.
+       Therefore validation is performed and all invalid entries are written to /data/error_records.txt
 
 
 4: SQL
@@ -97,5 +99,41 @@
 
 6. Any test cases you can think of ?
 
+    1. We can add invalid records to the file. For instance
+        a. Malformed Json
+        b. Record with invalid date ex: 2020-13-13
+        c. Record where timestamp is zero or less
+        d. Record where email, campaign_name, event_id, message_id, event are not strings or empty.
+        e. Record where business_id is not a number.
+      In all such instances, the row will be written to /data/error_records.txt with the correct reason(s).
 
-# Add multiprocessing
+    2. The data can have different email_timestamp records for when the email was opened. In this case the
+       query in 4.2 should give different numbers as per the buckets.
+
+    3. We can also test against the definition of "successful" campaign as defined in 4.3.
+
+7) How would you design it if it was streaming data ?
+
+   If this was streaming data then the following changes could have been made:
+
+   a. Instead of reading the entire file at a time, the code would be reading the data in micro-batches.
+   b. To sustain the load on the database, an intermediate storage that supports a higher data throughput (a message queue) could be used.
+   c. Multiprocessing could also be added to increase data load paralellization
+
+8) Any other insights you can derive from the data 
+
+   - The campaign with most "opened" emails may not be the most successful campaign.
+   - A campaign with lower number of opened email could be more successful because it has a higher delivered:opened ration.
+   - The email goes through multiple stages before reaching the customer
+        "send" -> "deferred"
+        "send" -> "processed"
+        "processed" -> "bounce"
+        "processed" -> "dropped"
+        "processed" -> "delivered"
+        "delivered" -> "clicked"
+        "delivered" -> "spam report"
+        "spam report" -> "clicked"
+        "clicked" -> "open"
+        "open" -> "unsubscribe"
+
+   - In the sample input email.json.gz, all emails were opened the same day as they were sent.

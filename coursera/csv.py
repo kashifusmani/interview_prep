@@ -108,10 +108,46 @@ def parse_3(x):
     result.append('END')
     return result
 
+def parse_4(x):
+    result = ['START']
+    i = 0
+    elem = ''
+    quote_start = False
+    prev_comma = True
+    while (i<len(x)):
+        if x[i] == "'" and not quote_start:
+            quote_start = True
+            while quote_start:
+                i += 1
+                if x[i] != "'":
+                    elem += x[i]
+                else:
+                    quote_start = False
+                    result.append(elem)
+                    elem = ''
+                    break
+        elif x[i] == "," and prev_comma:
+            result.append(elem)
+            prev_comma = False
+            elem = ''
+        elif x[i] != ",":
+            elem += x[i]
+            prev_comma = True
+        i += 1
+
+    if elem != '':
+        result.append(elem)
+    result.append('END')
+    return result
+
 if __name__ == '__main__':
+    """
     print(parse_3('a,b'))
     print(parse_3("a,b,'c,d'"))
     print(parse_3(",a"))
     print(parse_3("a,b,'c,d','e'"))
     print(parse_3("a,b,'c','e'"))
     print(parse_3("a,b,'c,d','e','g,h'"))
+    """
+    print(parse_4(',rocks'))
+    print(parse_4("'a',b,'c,d'"))

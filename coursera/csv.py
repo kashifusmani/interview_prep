@@ -125,6 +125,7 @@ def parse_4(x):
                     quote_start = False
                     result.append(elem)
                     elem = ''
+                    prev_comma = False
                     break
         elif x[i] == "," and prev_comma:
             result.append(elem)
@@ -149,5 +150,6 @@ if __name__ == '__main__':
     print(parse_3("a,b,'c','e'"))
     print(parse_3("a,b,'c,d','e','g,h'"))
     """
-    print(parse_4(',rocks'))
+    print(parse_4('coursera,rocks'))
+    print(parse_4(',education'))
     print(parse_4("'a',b,'c,d'"))

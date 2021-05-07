@@ -1,0 +1,26 @@
+Q-1(Can be solved with trie and BFS): Numbers on a dial pad 
+List of words and a number -> return words that can be made from that number
+
+e.g [cat,dog,abc] [117] -> returns [cat]
+
+
+Q-2 (Standard GRAPH and BFS) Given a list of connecting flights, origin and destination
+Return True false based on whether you can travel from one place to another
+e.g
+[
+    (AUS, TOR),
+    (TOR, MONTREAL)
+    (NYC, TOR)
+    (MONTREAL, NYC) 
+]
+orgin = AUS, Destination=NYC ---> Should return True
+
+(50-50: sliding window problem) Given a string S and a string T, find the minimum window in S which will contain all the characters in T.
+
+
+S= abcdefabc T = abc --->abc
+S= aadsbcdefaabc T = aabc ---> aabc
+S= aadsbcdefaab T = aabc ---> aadsbc
+
+For system design: Build a website that is recommending books to people
+- Task is to pull reviews from Amazon and add to you own website for the books that you are recommending.

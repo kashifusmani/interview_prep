@@ -109,6 +109,6 @@ if __name__ == "__main__" :
 
     arr = [4, 1, 1, 2, 1, 1, 3, 1, 1, 1, 1]
     #arr = [2, 1, 3, 1, 1, 0, 3]
-    n = len(arr);
+    n = len(arr)
 
-    print(findWater_2(arr, n));
+    print(findWater_2(arr, n))

@@ -4,12 +4,14 @@ def fib_1(n):
     else:
         return fib_1(n-1) + fib_1(n-2)
 
+
 def fib_2(n, result):
     if n in result:
         return result[n]
     else:
         result[n] = fib_2(n-1, result) + fib_2(n-2, result)
     return result[n]
+
 
 def fib_3(n):
     a = 0

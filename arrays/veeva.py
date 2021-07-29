@@ -12,7 +12,10 @@ Output = 3
 Q2
 
 
-Odin was a prisoner in mythland. Though Odin was a witty and intelligent guy. He was confident of escaping prison. After few days of observation, He figured out that the prison consists of (NXN) cells.i.e The shape of prison was (NXN) matrix. Few of the cells of the prison contained motion detectors. So Odin planned that while escaping the prison he will avoid those cells containing motion detectors.Yet before executing his plan, Odin wants to know the total number of unique possible paths which he can take to escape the prison.Initially Odin is in cell
+Odin was a prisoner in mythland. Though Odin was a witty and intelligent guy. He was confident of escaping prison.
+After few days of observation, He figured out that the prison consists of (NXN) cells.i.e
+The shape of prison was (N x N) matrix. Few of the cells of the prison contained motion detectors.
+So Odin planned that while escaping the prison he will avoid those cells containing motion detectors.Yet before executing his plan, Odin wants to know the total number of unique possible paths which he can take to escape the prison.Initially Odin is in cell
 (1,1) while the exit of the cell (NXN).
 
 note:->Odin can move in all four direction{ if his current location is (X,Y), he can move to either
@@ -56,7 +59,9 @@ matrix = [[0, 0, 0, 1], [0, 0, 0, 0], [1, 1, 1, 0], [1, 0, 0, 0]]
 print(find_exit_path(matrix, 4))
 
 """
-Given a number as string, remove k numbers to form the smallest possible number"""
+Given a number as string, remove k numbers to form the smallest possible number
+Ex: number = 1234, k=1, answer = 123
+"""
 def smallest_possible(num_str, k):
     if len(num_str) == k:
         return "0"

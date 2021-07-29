@@ -55,4 +55,5 @@ def rev(x):
             high = high - 1
     print(cp)
 
-rev('abc d ef')
+if __name__ == '__main__':
+    rev('abc d ef')

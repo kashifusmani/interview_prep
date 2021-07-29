@@ -125,11 +125,17 @@ def parse_4(x):
                     quote_start = False
                     result.append(elem)
                     elem = ''
-                    prev_comma = False
+                    if i+1 < len(x) and x[i+1] != ',':
+                        prev_comma = False
+                    else :
+                        prev_comma = True
+
                     break
         elif x[i] == "," and prev_comma:
             result.append(elem)
-            prev_comma = False
+            if i+1 < len(x) and x[i+1] != ',':
+                prev_comma = False \
+            # if x[i+1] != ',' else True
             elem = ''
         elif x[i] != ",":
             elem += x[i]
@@ -141,15 +147,23 @@ def parse_4(x):
     result.append('END')
     return result
 
+
+def solution(x):
+    return parse_4(x)
+
 if __name__ == '__main__':
-    """
-    print(parse_3('a,b'))
-    print(parse_3("a,b,'c,d'"))
-    print(parse_3(",a"))
-    print(parse_3("a,b,'c,d','e'"))
-    print(parse_3("a,b,'c','e'"))
-    print(parse_3("a,b,'c,d','e','g,h'"))
-    """
-    print(parse_4('coursera,rocks'))
-    print(parse_4(',education'))
-    print(parse_4("'a',b,'c,d'"))
+
+    print(solution('a,b'))
+    print(solution("a,b,'c,d'"))
+    print(solution(",a"))
+    print(solution("a,b,'c,d','e'"))
+    print(solution("a,b,'c','e'"))
+    print(solution("a,b,'c,d','e','g,h'"))
+
+    print(solution('coursera,rocks'))
+    print(solution(',education'))
+    print(solution("'a',b,'c,d'"))
+
+    print(solution('coursera,,,rocks'))
+
+    print(solution("a,'b,c',,d,'e,f,g',h,i,,'j,k,l',m,'n',o,"))

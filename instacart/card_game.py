@@ -1,7 +1,8 @@
 '''
 Card game
  
-You will be building a program to play a card game. The objective of the game is to form a hand of three cards that for each of three different properties are either all the same or all different.
+You will be building a program to play a card game. The objective of the game is to form a hand of three cards that for
+each of three different properties are either all the same or all different.
  
 The properties of a card are:
 1. Prefix: +, -, or =
@@ -12,9 +13,15 @@ For example, given the following set of cards
 -A -B -BB +C -C -CC =CCC
 there are two possible hands:
  
-+C -CC =CCC 1. Prefix: + , -, = | All different 2. Letter: C, C, C | All same 3. Number of letters: 1, 2, 3 | All different
++C -CC =CCC 1.
+    Prefix: + , -, = | All different 
+    Letter: C, C, C | All same 
+    Number of letters: 1, 2, 3 | All different
  
--A -B -C 1. Prefix: -, -, - | All same 2. Letter: A, B, C | All different 3. Number of letters: 1, 1, 1 | All same
+-A -B -C 1.
+    Prefix: -, -, - | All same 
+    Letter: A, B, C | All different 
+    Number of letters: 1, 1, 1 | All same
  
 Specifications
 – You only need to find one hand – The cards should be read from STDIN, each card is separated by a space
@@ -49,7 +56,9 @@ def calculate_win(perm):
     card_2 = perm[1]
     card_3 = perm[2]
 
-    if ((check_all_same_or_different(card_1[0], card_2[0], card_3[0])) and (check_all_same_or_different(card_1[1], card_2[1], card_3[1])) and (check_all_same_or_different(len(card_1)-1, len(card_2)-1, len(card_3) -1))):
+    if ((check_all_same_or_different(card_1[0], card_2[0], card_3[0])) and
+            (check_all_same_or_different(card_1[1], card_2[1], card_3[1])) and
+            (check_all_same_or_different(len(card_1)-1, len(card_2)-1, len(card_3) -1))): #-1 to subtract for the sign at the start.
             return [card_1, card_2, card_3]
 
 if __name__ == '__main__':

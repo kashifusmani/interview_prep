@@ -41,7 +41,7 @@ def process_chunk(lines, password_chars):
     for line in lines:
         if line_num == 0:
             password_index = int(line)
-        if line_num == 1:
+        elif line_num == 1:
             coordinate = line
         else:
             characters.append(line)
@@ -61,8 +61,12 @@ if __name__ == '__main__':
         if not item == '\n':
             sub_lines.append(item)
         else:
-            process_chunk(lines, password_chars)
+            process_chunk(sub_lines, password_chars)
+            sub_lines = []
 
     if sub_lines:
-        process_chunk(lines, password_chars)
-    print(password_chars)
+        process_chunk(sub_lines, password_chars)
+    result=''
+    for i in range(len(password_chars)):
+        result += password_chars[i]
+    print(result)

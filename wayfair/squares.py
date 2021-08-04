@@ -104,6 +104,17 @@ def find_squares(matrix):
 
 
 if __name__ == '__main__':
+    parent_child_pairs_1 = [
+        (1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5),
+        (4, 8), (4, 9), (9, 11), (14, 4), (13, 12), (12, 9),
+        (15, 13)
+    ]
+
+    for (x,y) in parent_child_pairs_1:
+        print(x)
+        print(y)
+        print('==')
+
     sample1 = [
         [0, 1, 1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1, 1, 1],

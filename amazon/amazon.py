@@ -166,4 +166,5 @@ def minimalHeaviestSetA(arr):
     
     return []
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
+    print("do something")

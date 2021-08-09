@@ -71,15 +71,14 @@ parent_child_pairs_2 = [
 ]
 
 
-
-def findAllParents(tree, nodeA):
+def find_all_parents(tree, nodeA):
     result = set()
     # return all the parents of nodeA
     for elem in tree:
         values = tree[elem]
         if nodeA in values:
             result.add(elem)
-            for par in findAllParents(tree, elem):
+            for par in find_all_parents(tree, elem):
                 result.add(par)
 
     return result
@@ -99,10 +98,10 @@ def has_common_ancestor(elems, nodeA, nodeB):
         if nodeA in elem and nodeB in elem:
             return True
 
-    parentsNodeA = findAllParents(tree, nodeA)
-    parentsNodeB = findAllParents(tree, nodeB)
+    parents_node_a = find_all_parents(tree, nodeA)
+    parents_node_b = find_all_parents(tree, nodeB)
 
-    if len(parentsNodeA.intersection(parentsNodeB)) > 0:
+    if len(parents_node_a.intersection(parents_node_b)) > 0:
         return True
 
     return False

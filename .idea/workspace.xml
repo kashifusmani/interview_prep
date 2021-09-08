@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf8e183-b75f-4081-829a-fccdcee3ae04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/careem/isPossible.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/largestSquare.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/minimumsum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/generalQuestions/Screen Shot 2021-08-29 at 11.31.03 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/generalQuestions/Screen Shot 2021-08-29 at 11.31.12 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/generalQuestions/Screen Shot 2021-08-29 at 11.31.22 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/generalQuestions/Screen Shot 2021-08-29 at 11.31.28 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/isPossible/Screen Shot 2021-08-29 at 11.32.44 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/isPossible/Screen Shot 2021-08-29 at 11.32.55 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/isPossible/Screen Shot 2021-08-29 at 11.33.06 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/isPossible/Screen Shot 2021-08-29 at 11.33.10 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/largestSquare/Screen Shot 2021-08-29 at 11.29.56 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/largestSquare/Screen Shot 2021-08-29 at 11.30.08 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/largestSquare/Screen Shot 2021-08-29 at 11.30.22 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/largestSquare/Screen Shot 2021-08-29 at 11.30.28 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/minimumSum/Screen Shot 2019-02-09 at 11.49.26 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/minimumSum/Screen Shot 2019-02-09 at 11.49.36 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/minimumSum/Screen Shot 2019-02-09 at 11.49.44 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/minimumSum/Screen Shot 2019-02-09 at 11.49.51 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/separatingStudents/Screen Shot 2019-02-09 at 11.48.48 AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/separatingStudents/Screen Shot 2019-02-09 at 12.18.24 PM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/separatingStudents/Screen Shot 2019-02-09 at 12.18.30 PM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/questions/separatingStudents/Screen Shot 2019-02-09 at 12.18.37 PM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/separatingStudents.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/toptal/q3.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/argoai/animals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview_prep.iml" beforeDir="false" afterPath="$PROJECT_DIR$/interview_prep.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wayfair/squares.py" beforeDir="false" afterPath="$PROJECT_DIR$/wayfair/squares.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,11 +14,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/careem/separatingStudents.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="450">
+              <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/argoai/animals.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="512">
+              <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+              <folding>
+                <element signature="e#16#27#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,20 +80,21 @@
         <option value="$PROJECT_DIR$/careem/largestSquare.py" />
         <option value="$PROJECT_DIR$/careem/minimumsum.py" />
         <option value="$PROJECT_DIR$/careem/separatingStudents.py" />
+        <option value="$PROJECT_DIR$/argoai/animals.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="896" />
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="896" />
-    <option name="height" value="1097" />
+    <option name="width" value="1792" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,29 +105,17 @@
             <path>
               <item name="interview_prep" type="b2602c69:ProjectViewProjectNode" />
               <item name="interview_prep" type="462c0819:PsiDirectoryNode" />
-              <item name="amazon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interview_prep" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interview_prep" type="462c0819:PsiDirectoryNode" />
-              <item name="careem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interview_prep" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interview_prep" type="462c0819:PsiDirectoryNode" />
-              <item name="careem" type="462c0819:PsiDirectoryNode" />
-              <item name="questions" type="462c0819:PsiDirectoryNode" />
+              <item name="argoai" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1630252303956" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1631132030893" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -315,10 +289,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="896" y="23" width="896" height="1097" extended-state="0" />
+    <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.43208432" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20127796" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -333,7 +307,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.6395112" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30785564" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005714" side_tool="true" weight="0.20570265" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -374,13 +348,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/shopify/upc_checksum.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/instacart/find_char.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -594,8 +561,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/careem/separatingStudents.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="450">
+          <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/argoai/animals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+          <folding>
+            <element signature="e#16#27#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

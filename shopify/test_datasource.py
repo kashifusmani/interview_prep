@@ -1,4 +1,3 @@
-import pytest
 
 class TestDatasource(object):
 
@@ -100,10 +99,31 @@ class Datasource(object):
         return result
     
     
-pytest.main() 
+if __name__ == '__main__':
+    ts = TestDatasource()
+    #ts.test_collect_with_a_single_map()
+    # ts.test_collect_with_chained_maps_and_filters()
+    ts.test_collect_with_two_maps()
 
 
+'''
+class Datasource:
+
+    def __init__(self, input_lst):
+        self.input_lst = input_lst
+
+    def map(self, func):
+        result = map(self.inmput_lsit, func)
+
+        return Datasource(result)
+
+    def filter(self, func):
+        result = filter(self.inmput_lsit, func)
+
+        return Datasource(result)
+
+    def collect(self):
+        return self.input_lst
 
 
-
-
+'''

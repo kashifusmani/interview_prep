@@ -39,4 +39,4 @@ def minimumGroups(predators):
     return(max(getLevel(predators)) + 1)
 
 if __name__ == '__main__':
-    minimumGroups([-1, 8, 6, 0, 7, 3, 8, 9, -1, 6])
+    print(minimumGroups([-1, 8, 6, 0, 7, 3, 8, 9, -1, 6]))

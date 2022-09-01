@@ -47,4 +47,4 @@ if __name__ == '__main__':
     #print(cal('abc'))
     #print(cal('abca'))
     input = [5, -2, 4, 'Z', 'X', 9, '+', '+']
-    score(input)
+    print(score(input))

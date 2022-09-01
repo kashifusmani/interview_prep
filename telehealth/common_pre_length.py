@@ -19,6 +19,6 @@ def commonPrefix(inputs):
 
 
 if __name__ == '__main__':
-    input = ['abcabcd']
-    commonPrefix(input)
+    input = ['abcabcd', 'ab']
+    print(commonPrefix(input))
 

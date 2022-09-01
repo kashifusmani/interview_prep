@@ -22,7 +22,8 @@ select * from (
 	select type, variety, price,
 	@price_rank := IF(@current_type = type, @price_rank+1,1) as price_rank,
 	@current_type := type
- from fruits  order by type, price desc) ranked where price_rank <=1
+    from fruits  order by type, price desc)
+ranked where price_rank <=1
 
 --Get cheapest from each category
 

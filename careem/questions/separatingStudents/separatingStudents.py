@@ -1,4 +1,5 @@
 #This solution needs to be revisited
+#https://www.geeksforgeeks.org/minimum-swaps-required-group-1s-together/
 def minCommon(arr):
     precomp = precompute(arr)
     numOnes = arr.count(1)

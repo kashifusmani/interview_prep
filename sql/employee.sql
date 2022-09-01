@@ -29,15 +29,18 @@ insert into employee values (9, "I", 3, 200);
 select * from employee where salary = (select max(salary) from employee);
 
 --return second highest salary in employee table(or select employee with second highest salary)
-select max(salary) from employee where salary not in (select max(salary) from employee) 
+select max(salary) from employee where salary not in (select max(salary) from employee)
 --OR
- select * from employee where salary = (select max(salary) from employee where salary not in (select max(salary) from employee))
+select * from employee where salary = (select max(salary) from employee where salary not in (select max(salary) from employee))
 
 --A better way
-select * from ( 
+select * from (
   select salary,
-  @salary_rank := IF(@salary_rank, @salary_rank+1, 1) as salary_rank
-  from  (select distinct(salary) from employee order by salary desc) x)  y
+    @salary_rank := IF(@type=dept_id, @salary_rank+1, 1) as salary_rank,
+    @type := dept_id
+  from (
+    select distinct(salary) from employee order by salary desc) x
+    )  y
   join employee where employee.salary = y.salary and y.salary_rank = 2
 
 --return employee with highest salary and employee’s department name
@@ -46,8 +49,8 @@ select d.dept_name, e.emp_id where e.salary = (select max(salary) from employee)
 --return highest salary, employee_name, department_name for each department
 select e.salary, e.employee_name, d.dept_name
 from employee e inner join department d
-on e.dept_id = d.dept_id  
-having  select max(e.salary), e.emp_id, d.dept_id
+on e.dept_id = d.dept_id
+having select max(e.salary), e.emp_id, d.dept_id
   from employee e
   inner join department d
   on e.dept_id = d.dept_id
@@ -66,10 +69,10 @@ e.dept_id = X.dept_id and e.salary = X.salary and e.dept_id = d.dept_id
 -- return employee details with second higest salary in each department
 
 select * from (
-select emp_id, emp_name, dept_id, salary,
-@salary_rank := IF(@type=dept_id, @salary_rank+1, 1) as salary_rank,
-@type := dept_id
-from employee
-order by dept_id, salary desc
-) as X
+    select emp_id, emp_name, dept_id, salary,
+    @salary_rank := IF(@type=dept_id, @salary_rank+1, 1) as salary_rank,
+    @type := dept_id
+    from employee
+    order by dept_id, salary desc
+    ) as X
 where X.salary_rank = 2

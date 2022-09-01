@@ -1,4 +1,5 @@
-#Given an integer array of the item weights, partition it into two sets S1 and S2 such that the sum of S1 is greater than that of S2. Return S1.
+# Given an integer array of the item weights,
+# partition it into two sets S1 and S2 such that the sum of S1 is greater than that of S2. Return S1.
 # If more than one such partition exists, return the one with minimal size.
 
 

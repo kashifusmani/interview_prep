@@ -14,7 +14,7 @@ def frequency(s):
                 result[character_num] = num_count + result[character_num]
             else:
                 result[character_num] = num_count
-            i = i = i-2
+            i = i-2
             num_count = 1
         else:
             character_num = int(s[i])

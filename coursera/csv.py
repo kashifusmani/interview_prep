@@ -114,7 +114,7 @@ def parse_4(x):
     elem = ''
     quote_start = False
     prev_comma = True
-    while (i<len(x)):
+    while i < len(x):
         if x[i] == "'" and not quote_start:
             quote_start = True
             while quote_start:
@@ -134,7 +134,7 @@ def parse_4(x):
         elif x[i] == "," and prev_comma:
             result.append(elem)
             if i+1 < len(x) and x[i+1] != ',':
-                prev_comma = False \
+                prev_comma = False
             # if x[i+1] != ',' else True
             elem = ''
         elif x[i] != ",":

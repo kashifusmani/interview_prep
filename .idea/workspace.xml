@@ -1,143 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="dcf8e183-b75f-4081-829a-fccdcee3ae04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/argoai/frequency/Screen Shot 2021-09-16 at 4.23.43 PM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/argoai/frequency/Screen Shot 2021-09-16 at 4.23.53 PM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/argoai/frequency/Screen Shot 2021-09-16 at 4.24.03 PM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/argoai/frequency/Screen Shot 2021-09-16 at 4.24.11 PM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/argoai/frequency/frequency.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/beyond/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/beyond/bpify.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/beyond/currencies.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/beyond/markets.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/beyond/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/beyond/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/careem/calc_bst_combinations.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/population/WhatsApp Image 2021-10-10 at 10.36.24 PM (1).jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/population/WhatsApp Image 2021-10-10 at 10.36.24 PM (2).jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/population/WhatsApp Image 2021-10-10 at 10.36.24 PM (3).jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/population/WhatsApp Image 2021-10-10 at 10.36.24 PM.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/population/solution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/task/task1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/task/task2.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/task/task3.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/task/task4.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/task/task5.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hopper/task/task_solution.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netskope/flattener.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopify/moves.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopify/test_datasource_defrred.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/hopper/shopping_under_budget/shopping.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/hopper/shopping_under_budget/shopping1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/hopper/shopping_under_budget/shopping2.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/hopper/shopping_under_budget/shopping3.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/talabat/sessions_transactions.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/talabat/strings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ww/Screen Shot 2021-09-20 at 3.04.57 PM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ww/contiguous_numbers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/acryl/acryl-data-417621-5a0cf944cb64.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/acryl/converters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/acryl/gsheet_util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/acryl/populate_weather.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/acryl/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patterns/sliding-window/max_sum_subarray.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plaid/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plaid/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/Http.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/balances.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/binary_search.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/comparator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/customer_penalty.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/data.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/number_gap.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/requestss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/servers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stripe/time_key.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/argoai/Screen Shot 2021-09-08 at 3.28.09 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/argoai/animals/Screen Shot 2021-09-08 at 3.28.09 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/argoai/Screen Shot 2021-09-08 at 3.28.22 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/argoai/animals/Screen Shot 2021-09-08 at 3.28.22 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/argoai/Screen Shot 2021-09-08 at 3.28.41 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/argoai/animals/Screen Shot 2021-09-08 at 3.28.41 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/argoai/Screen Shot 2021-09-08 at 3.28.53 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/argoai/animals/Screen Shot 2021-09-08 at 3.28.53 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/argoai/Screen Shot 2021-09-08 at 3.29.02 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/argoai/animals/Screen Shot 2021-09-08 at 3.29.02 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/argoai/animals.py" beforeDir="false" afterPath="$PROJECT_DIR$/argoai/animals/animals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify/test_datasource.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify/test_datasource.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/employee.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/employee.sql" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hopper/population/solution.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/netskope/flattener.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shopify/moves.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shopify/Interviewq1.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sql/hopper/shopping_under_budget/shopping2.jpeg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sql/talabat/sessions_transactions.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sql/hopper/shopping_under_budget/shopping.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="674">
-              <caret line="94" column="50" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/argoai/animals/animals.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/argoai/frequency/frequency.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/careem/calc_bst_combinations.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
-              <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -222,11 +118,18 @@
       </list>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="977" />
     <option name="height" value="1057" />
   </component>
+  <component name="ProjectId" id="2NayWRZ1lsbSyZOCRrymCSx1Zs2" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -267,63 +170,56 @@
       <pane id="PackagesPane" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1638378444420" />
-    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kashifusmani/Projects/interview_prep/acryl&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/acryl" />
       <recent name="$PROJECT_DIR$/sql/hopper/shopping_under_budget" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/plaid" />
       <recent name="$PROJECT_DIR$/sql/hopper/shopping_under_budget" />
       <recent name="$PROJECT_DIR$/hopper/task" />
       <recent name="$PROJECT_DIR$/hopper/population" />
       <recent name="$PROJECT_DIR$/hopper" />
-      <recent name="$PROJECT_DIR$/sql/hopper/population" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.solution">
-    <configuration name="bpify" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.populate_weather">
+    <configuration name="Http" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="interview_prep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="FLASK_APP" value="bfipy.py" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../virts/beyond/bin/python3.9" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/beyond" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/stripe" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="net.ashald.envfile">
-        <option name="IS_ENABLED" value="false" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
-        </ENTRIES>
-      </EXTENSION>
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/beyond/bpify.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stripe/Http.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -332,7 +228,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="contiguous_numbers" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="balances" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="interview_prep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -340,11 +236,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ww" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/stripe" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ww/contiguous_numbers.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stripe/balances.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -353,7 +250,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="frequency" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="populate_weather" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="interview_prep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -361,11 +258,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/argoai" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/acryl" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/argoai/frequency/frequency.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/acryl/populate_weather.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -374,7 +272,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="solution" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="requestss" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="interview_prep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -382,11 +280,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/hopper/population" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/stripe" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hopper/population/solution.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stripe/requestss.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -395,7 +294,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="time_key" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="interview_prep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -403,11 +302,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/beyond" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/stripe" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/beyond/test.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stripe/time_key.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -417,31 +317,23 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.frequency" />
-      <item itemvalue="Python.contiguous_numbers" />
-      <item itemvalue="Python.test" />
-      <item itemvalue="Python.bpify" />
-      <item itemvalue="Python.solution" />
+      <item itemvalue="Python.populate_weather" />
+      <item itemvalue="Python.Http" />
+      <item itemvalue="Python.balances" />
+      <item itemvalue="Python.requestss" />
+      <item itemvalue="Python.time_key" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.solution" />
-        <item itemvalue="Python.bpify" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.contiguous_numbers" />
-        <item itemvalue="Python.frequency" />
+        <item itemvalue="Python.populate_weather" />
+        <item itemvalue="Python.balances" />
+        <item itemvalue="Python.requestss" />
+        <item itemvalue="Python.Http" />
+        <item itemvalue="Python.time_key" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SbtLocalSettings">
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$/../dp-spark-events" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../teletracking-dataplatform-spark-batchload" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../teletracking-dataplatform-spark-event-processing" value="PREVIEW" />
-      </map>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -452,6 +344,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1625774348379</updated>
+      <workItem from="1679916519458" duration="786000" />
+      <workItem from="1682980424860" duration="565000" />
+      <workItem from="1683018303796" duration="1237000" />
+      <workItem from="1683120285590" duration="2000" />
+      <workItem from="1689156594413" duration="826000" />
+      <workItem from="1689440776738" duration="36000" />
+      <workItem from="1691443142225" duration="34000" />
+      <workItem from="1695899042058" duration="42855000" />
+      <workItem from="1709717083414" duration="15000" />
+      <workItem from="1710873927017" duration="2973000" />
+      <workItem from="1711053637835" duration="2562000" />
+      <workItem from="1718802043781" duration="710000" />
+      <workItem from="1720693640434" duration="70000" />
+      <workItem from="1720693834703" duration="448000" />
     </task>
     <servers />
   </component>
@@ -495,8 +401,19 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
     </layout>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -511,6 +428,16 @@
           <line>12</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stripe/balances.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stripe/balances.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -520,14 +447,37 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="listing['listing_id']" language="Python" />
-        <watch expression="listings" language="Python" />
-        <watch expression="listings_manager" language="Python" />
-        <watch expression="self.exchangerates_dao.get_exchange_rates()['INR']" language="Python" />
-      </configuration>
-    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/interview_prep$isPossible.coverage" NAME="isPossible Coverage Results" MODIFIED="1660791177407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/careem/questions/isPossible" />
+    <SUITE FILE_PATH="coverage/interview_prep$balances.coverage" NAME="balances Coverage Results" MODIFIED="1696447002495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stripe" />
+    <SUITE FILE_PATH="coverage/interview_prep$interview.coverage" NAME="interview Coverage Results" MODIFIED="1661308978961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fahecom" />
+    <SUITE FILE_PATH="coverage/interview_prep$permutation.coverage" NAME="permutation Coverage Results" MODIFIED="1660849073891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recursion" />
+    <SUITE FILE_PATH="coverage/interview_prep$anagrams_list.coverage" NAME="anagrams_list Coverage Results" MODIFIED="1660872243956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fathom" />
+    <SUITE FILE_PATH="coverage/interview_prep$time_key.coverage" NAME="time_key Coverage Results" MODIFIED="1696211073668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stripe" />
+    <SUITE FILE_PATH="coverage/interview_prep$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1695901993521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stripe" />
+    <SUITE FILE_PATH="coverage/interview_prep$reverse_with_spaces.coverage" NAME="reverse_with_spaces Coverage Results" MODIFIED="1660687407399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/arrays" />
+    <SUITE FILE_PATH="coverage/interview_prep$comparator.coverage" NAME="comparator Coverage Results" MODIFIED="1696188018293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stripe" />
+    <SUITE FILE_PATH="coverage/interview_prep$Http.coverage" NAME="Http Coverage Results" MODIFIED="1696375003344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stripe" />
+    <SUITE FILE_PATH="coverage/interview_prep$score.coverage" NAME="score Coverage Results" MODIFIED="1660616168131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/amazon" />
+    <SUITE FILE_PATH="coverage/interview_prep$answer.coverage" NAME="answer Coverage Results" MODIFIED="1660873115823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/doordash/min_degree_graph" />
+    <SUITE FILE_PATH="coverage/interview_prep$optimizing_box_weights.coverage" NAME="optimizing_box_weights Coverage Results" MODIFIED="1660616618565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/amazon" />
+    <SUITE FILE_PATH="coverage/interview_prep$maze.coverage" NAME="maze Coverage Results" MODIFIED="1660686891857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/arrays" />
+    <SUITE FILE_PATH="coverage/interview_prep$animals.coverage" NAME="animals Coverage Results" MODIFIED="1660703974482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/argoai/animals" />
+    <SUITE FILE_PATH="coverage/interview_prep$sentence_reversal.coverage" NAME="sentence_reversal Coverage Results" MODIFIED="1660687873527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/arrays" />
+    <SUITE FILE_PATH="coverage/interview_prep$strings.coverage" NAME="strings Coverage Results" MODIFIED="1660688563545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/talabat" />
+    <SUITE FILE_PATH="coverage/interview_prep$int_to_word.coverage" NAME="int_to_word Coverage Results" MODIFIED="1660686028390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/amazon" />
+    <SUITE FILE_PATH="coverage/interview_prep$csv.coverage" NAME="csv Coverage Results" MODIFIED="1660860730849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/coursera" />
+    <SUITE FILE_PATH="coverage/interview_prep$common_pre_length.coverage" NAME="common_pre_length Coverage Results" MODIFIED="1660860555594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/telehealth" />
+    <SUITE FILE_PATH="coverage/interview_prep$number_gap.coverage" NAME="number_gap Coverage Results" MODIFIED="1696119199021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stripe" />
+    <SUITE FILE_PATH="coverage/interview_prep$largestSquare.coverage" NAME="largestSquare Coverage Results" MODIFIED="1660854071068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/careem/questions/largestSquare" />
+    <SUITE FILE_PATH="coverage/interview_prep$frequency.coverage" NAME="frequency Coverage Results" MODIFIED="1660789929314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/argoai/frequency" />
+    <SUITE FILE_PATH="coverage/interview_prep$requestss.coverage" NAME="requestss Coverage Results" MODIFIED="1696385205030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stripe" />
+    <SUITE FILE_PATH="coverage/interview_prep$swap.coverage" NAME="swap Coverage Results" MODIFIED="1661653729347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/arrays" />
+    <SUITE FILE_PATH="coverage/interview_prep$zakat_calc.coverage" NAME="zakat_calc Coverage Results" MODIFIED="1695899257283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/interview_prep$webpage.coverage" NAME="webpage Coverage Results" MODIFIED="1663618565338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/arrays" />
+    <SUITE FILE_PATH="coverage/interview_prep$chess_moves.coverage" NAME="chess_moves Coverage Results" MODIFIED="1664073299442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/arrays" />
+    <SUITE FILE_PATH="coverage/interview_prep$populate_weather.coverage" NAME="populate_weather Coverage Results" MODIFIED="1710876388570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/acryl" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">

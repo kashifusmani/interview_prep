@@ -1,0 +1,39 @@
+version: 2
+sources:
+  - name: bookings
+    tables:
+      - name: bookings
+      - name: tickets
+      - name: routes
+
+models:
+  - name: daily_ticket_sales
+    description: "Calculates the total number of tickets sold each day."
+    columns:
+      - name: sale_date
+        description: "The date of ticket sales"
+        tests:
+          - unique
+    unique_key: [sale_date]
+    sql: ./daily_ticket_sales.sql
+
+  - name: rolling_7_day_ticket_sales
+    description: "Calculates the total number of tickets sold in rolling 7-day periods."
+    columns:
+      - name: sale_date
+        description: "The starting date of the rolling 7-day period"
+        tests:
+          - unique
+    unique_key: [sale_date]
+    sql: ./rolling_7_day_ticket_sales.sql
+
+  - name: rolling_28_day_ticket_sales
+    description: "Calculates the total number of tickets sold in rolling 28-day periods."
+    materialized: table
+    columns:
+      - name: sale_date
+        description: "The starting date of the rolling 28-day period"
+        tests:
+          - unique
+    unique_key: [sale_date]
+    sql: ./rolling_7_day_ticket_sales.sql

@@ -1,0 +1,21 @@
+Custom Json library that has problem parsing
++++++++
+
+Create a program from scratch that will use various APIs along with geolocation data files you're given to create a path.
+This is rather trivial but requires you can easily parse and send HTTP requests out from your language of choice.
+
+Integration round need you to understand HTTP Rest calls, parsing some Json and sending requests to some API server,
+I managed to get the code completed with some googling of new libs/apis.
+Write the code to replay a list of HTTP requests from a file represented as JSON
+
+++
+how to parse an ast (Abstract Syntax Tree)
++++
+Write a stateful HTTP client for Stripe API using your favorite  framework in your favorite language.
+++
+
+Find the row in a tabular data structure / matrix that contains the column with the smallest / minimum numeric value while viewing a wall of text
+
+
+
+revise string parsing questions.

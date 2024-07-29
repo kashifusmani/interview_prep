@@ -1,4 +1,4 @@
--- https://www.psce.com/en/blog/2012/05/15/mysql-mistakes-do-you-use-group-by-correctly/
+ v  -- https://www.psce.com/en/blog/2012/05/15/mysql-mistakes-do-you-use-group-by-correctly/
 create table employee (
    emp_id int primary key,
    emp_name varchar(100),

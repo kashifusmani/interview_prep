@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: redemption_bookings
+    description: "Calculates the number of redemption bookings by day."
+    materialized: table
+    columns:
+      - name: booking_date
+        description: "The date of the booking"
+        tests:
+          - unique
+    unique_key: [booking_date]
+    sql: ./redemption_bookings.sql

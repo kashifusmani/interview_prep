@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: valid_bookable_routes
+    description: "Shows all valid and bookable routes."
+    materialized: table
+    columns:
+      - name: origin_airport_code
+        description: "Airport code of the origin"
+      - name: departure_time
+        description: "Departure time from the origin"
+      - name: destination_airport_code
+        description: "Airport code of the destination"
+      - name: arrival_time
+        description: "Arrival time at the destination"
+      - name: transfer_airport_code
+        description: "Airport code of the transfer (if any)"
+      - name: transfer_departure_time
+        description: "Departure time from the transfer airport (empty if no transfer)"
+      - name: transfer_arrival_time
+        description: "Arrival time at the transfer airport (empty if no transfer)"
+      - name: flight_numbers
+        description: "Flight numbers of each flight in the route"
+    unique_key: [ origin_airport_code, departure_time, destination_airport_code, arrival_time ]
+    sql: ./valid_bookable_routes.sql
